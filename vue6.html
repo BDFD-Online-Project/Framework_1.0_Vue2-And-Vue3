@@ -3,75 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue Day 5</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
+    <title>Vue Day 6</title>
   </head>
   <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
     <div id="app">
       <section>
         <div class="container">
-          <div class="input">
-            {{name}},<br>
-            {{sex}},<br>
-            {{age}}<br />
-            {{favor.length ? 'like' : ''}}
-            {{favor.join(',')}}
-            {{favor.length ? ', and' : 'I am'}}
-            {{member ? 'already become a' : 'not a'}} member.
-          </div>
-          <div class="menu">
-            <table>
-              <tr>
-                <td class="title">
-                  name:
-                </td>
-                <td>
-                  <input v-model="name" />
-                </td>
-              </tr>
-              <tr>
-                <td class="title">
-                  sex:
-                </td>
-                <td>
-                  <input type="radio" value="female" v-model="sex" />female
-                  <input type="radio" value="male" v-model="sex"/>male
-                </td>
-              </tr>
-              <tr>
-                <td class="title">age</td>
-                <td>
-                  <select v-model="age">
-                    <option>below 20</option>
-                    <option>20-30</option>
-                    <option>30-40</option>
-                    <option>above 40</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td class="title">
-                  <td>hobby</td>
-                  <td>
-                    <input type="checkbox" value="play computer game" v-model="favor">play computer game
-                    <input type="checkbox" value="travel" v-model="favor">travel
-                    <input type="checkbox" value="play board game" v-model="favor">play borad game
-                  </td>
-                </td>
-              </tr>
-              <tr>
-                <td class="title">
-                  <td>member</td>
-                  <td>
-                    <input type="checkbox" v-model="member">
-                  </td>
-                </td>
-              </tr>
-            </table>
+          <div class="title">
+            <div class="input">
+              <select v-model="input.type">
+                <option>TOPIC 1</option>
+                <option>TOPIC 2</option>
+                <option>TOPIC 3</option>
+                <option>TOPIC 4</option>
+                <option>TOPIC 5</option>
+                <option>TOPIC 6</option>
+              </select>
+              <input
+                type="text"
+                v-model.trim="input.title"
+                @keyup.enter="inputHandler"
+              />
+            </div>
+            <br />
+            <div class="menu">
+              <div class="menuItem" v-for="(item, index) in menu" :key="index">
+                <span class="number">{{index+1}}</span>
+                <span class="type">{{item.type}}</span>
+                <a :href="item.link" target="vue-iron" class="title"
+                  >{{item.title}}</a
+                >
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </div>
-    <script src="./js/day5.js"></script>
+    <script src="./js/day6.js"></script>
   </body>
 </html>
